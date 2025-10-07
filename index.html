@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Personal Website — Starter</title>
+  <meta name="description" content="A clean, responsive single-file starter website you can edit and publish." />
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa6b2;--accent:#4f46e5;--glass:rgba(255,255,255,0.03)}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;background:linear-gradient(180deg,#071029 0%,#071a2b 60%);color:#e6eef6;-webkit-font-smoothing:antialiased}
+    .container{max-width:1100px;margin:36px auto;padding:0 20px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px;border-radius:14px;background:linear-gradient(90deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));backdrop-filter:blur(6px)}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700;color:white}
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600}
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;margin-top:28px}
+    .hero h1{font-size:38px;margin:0 0 12px}
+    .lead{color:var(--muted);line-height:1.5}
+    .cta{margin-top:18px}
+    .btn{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--accent);color:white;text-decoration:none;font-weight:700}
+    .card{background:linear-gradient(180deg,var(--card),rgba(255,255,255,0.02));padding:18px;border-radius:12px}
+    .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+    .feature{padding:14px;background:var(--glass);border-radius:10px}
+    .portfolio{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+    .folio-item{height:120px;border-radius:8px;background:linear-gradient(90deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700}
+    footer{margin-top:36px;padding:20px;border-radius:12px;text-align:center;color:var(--muted);font-size:14px}
+    form{display:flex;flex-direction:column;gap:10px}
+    input,textarea{padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    .row{display:flex;gap:10px}
+    .row > *{flex:1}
+    @media (max-width:900px){.hero{grid-template-columns:1fr;}.feature-grid,.portfolio{grid-template-columns:repeat(2,1fr)}.portfolio .folio-item{height:100px}}
+    @media (max-width:520px){.feature-grid{grid-template-columns:1fr}.portfolio{grid-template-columns:1fr}.brand .logo{width:36px;height:36px}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">Y</div>
+        <div>
+          <div style="font-weight:800">Your Name</div>
+          <div style="font-size:12px;color:var(--muted)">Designer • Developer • Creator</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h1>Hello — I build things people use.</h1>
+        <p class="lead">This is a compact, responsive starter website. Edit text, swap colors, add pages, or connect it to your favorite backend or static site host (Netlify, Vercel, GitHub Pages).</p>
+        <div class="cta">
+          <a class="btn" href="#contact">Get in touch</a>
+        </div>
+
+        <div class="card">
+          <div style="font-weight:700">Skills</div>
+          <div class="feature-grid">
+            <div class="feature">Web Design</div>
+            <div class="feature">JavaScript</div>
+            <div class="feature">React / Vue</div>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h3 style="margin:0 0 8px">Contact</h3>
+          <form id="contactForm">
+            <input id="name" placeholder="Your name" required />
+            <input id="email" type="email" placeholder="you@domain.com" required />
+            <textarea id="message" rows="4" placeholder="How can I help?"></textarea>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <button class="btn" type="submit" style="border:none;cursor:pointer">Send</button>
+              <button type="button" onclick="fillDemo()" style="border:none;background:transparent;color:var(--muted);cursor:pointer">Fill demo</button>
+            </div>
+            <div id="status" style="margin-top:8px;color:var(--muted);font-size:13px"></div>
+          </form>
+        </div>
+
+        <div style="height:16px"></div>
+        <div class="card">
+          <div style="font-weight:700;margin-bottom:8px">Recent projects</div>
+          <div class="portfolio">
+            <div class="folio-item">Project A</div>
+            <div class="folio-item">Project B</div>
+            <div class="folio-item">Project C</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <footer id="contact">
+      <div style="font-weight:700;margin-bottom:8px">Let's build something.</div>
+      <div>© <span id="year"></span> Your Name — made with ☕</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function fillDemo(){document.getElementById('name').value='Marko M.';document.getElementById('email').value='hello@example.com';document.getElementById('message').value='Hi — I\'d like to talk about a website project.'}
+
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      var name = document.getElementById('name').value.trim();
+      var email = document.getElementById('email').value.trim();
+      var msg = document.getElementById('message').value.trim();
+      if(!name||!email){document.getElementById('status').textContent='Please enter name and email.';return}
+      document.getElementById('status').textContent = 'Thanks ' + name + '! This demo form doesn\'t actually send — replace the JS to connect to your API.';
+      this.reset();
+    });
+  </script>
+</body>
+</html>
